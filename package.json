@@ -64,8 +64,10 @@
   },
   "dependencies": {
     "core-js": "^2.0.0",
+    "csswring": "^4.2.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "normalize.css": "^4.0.0",
+    "postcss-nested": "^1.0.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0"
   }

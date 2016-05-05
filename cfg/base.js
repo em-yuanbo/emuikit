@@ -38,5 +38,15 @@ module.exports = {
       config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV
     }
   },
-  module: {}
+  module: {},
+  postcss:
+    //function () {
+    //var ps =
+    [
+      require('postcss-nested')(),
+      require('autoprefixer')({browsers:['last 2 versions','ie 9','Firefox > 20']}),
+      //require('csswring')(),
+    ]
+    //return ps;
+  //}
 };
