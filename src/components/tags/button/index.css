@@ -1,0 +1,127 @@
+.root{
+  width: 80px;
+  height: 24px;
+  box-sizing:border-box;
+  cursor: pointer;
+  border-radius: 2px;
+  border: 1px solid rgb(229, 229, 229);
+  background-color: rgb(255, 255, 255);
+  font-family: Lato, sans-serif;
+  font-size: 12px;
+  line-height:24px;
+  text-align:center;
+  color: rgb(26, 26, 26);
+
+  &:hover{
+    color: rgb(255, 255, 255);
+  }
+
+  &:global(.regular){
+    &:hover{
+      background-color: rgb(167, 212, 42);
+      border: 1px solid rgb(167, 212, 42);
+    }
+  }
+
+  &:global(.main){
+    background-color: rgb(178, 221, 76);
+    border: 1px solid rgb(167, 212, 42);
+    color: rgb(255,255,255);
+    &:hover{
+      background-color: rgb(167, 212, 42);
+      border: 1px solid rgb(167, 212, 42);
+    }
+  }
+
+  &:global(.cancel){
+    &:hover{
+      border: 1px solid rgb(229, 229, 229);
+      background-color: rgb(229, 229, 229);
+      color: rgb(26, 26, 26);
+    }
+  }
+  &:global(.counting),
+  &:global(.loading),
+  &:global(.disabled){
+    color: rgb(153, 153, 153);
+    cursor:default;
+    background-color: rgb(229, 229, 229);
+    border: 1px solid rgb(229, 229, 229);
+    &:hover{
+      color: rgb(153, 153, 153);
+    }
+  }
+  &:global(.loading){
+    :global(.dot){
+      width: 4px;
+      height: 4px;
+      opacity:0.4;
+      margin:0 3px;
+      display:inline-block;
+      border-radius: 50%;
+      background-color: rgb(153, 153, 153);
+      animation: opacity 1.2s infinite ease-in-out;
+      animation-fill-mode: both;
+      &:global(.dot0){
+        animation-delay: 0s;
+      }
+      &:global(.dot1){
+        animation-delay: 0.3s;
+      }
+      &:global(.dot2){
+        animation-delay: 0.6s;
+      }
+      &:global(.dot3){
+        animation-delay: 0.9s;
+      }
+    }
+  }
+
+  &:global(.tip){
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(244, 163, 0);
+    background-color: rgb(255, 170, 0);
+    &:hover{
+      background-color: rgb(244, 163, 0);
+    }
+  }
+  &:global(.warning){
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 35, 0);
+    background-color: rgb(255, 42, 0);
+    &:hover{
+      background-color: rgb(240, 35, 0);
+    }
+  }
+
+  &:global(.big){
+    width: 120px;
+    height: 36px;
+    font-size: 16px;
+    line-height:36px;
+  }
+  &:global(.custom-button){
+    :global{
+      text-align:left;
+      display:flex;
+      .custom-icon{
+        display:inline-block;
+        width:24px;
+        font-size:16px;
+      }
+      .custom-label{
+        display:inline-block;
+        flex:1;
+      }
+    }
+
+  }
+}
+@keyframes opacity{
+  0%, 40%, 100% {
+    opacity: 0.4;
+    background-color: rgb(77, 77, 77);
+  }  20% {
+    opacity: 1.0;
+  }
+}
