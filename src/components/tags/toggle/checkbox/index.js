@@ -6,7 +6,7 @@ import styles from './index.css';
 
 class CheckboxWithLabel extends React.Component{
   render(){
-    var checkedClass = this.state.checked?'checked':'';
+    //var checkedClass = this.state.checked?'checked':'';
     return (
       <div className={`${styles.root} ${this.props.className||''}`} onClick={this.onClick}>
       <Checkbox />

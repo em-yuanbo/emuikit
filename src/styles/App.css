@@ -1,12 +1,7 @@
 .root{
+  padding:10px;
+  position:relative;
   :global{
-    img {
-      margin: 40px auto;
-      border-radius: 4px;
-      background: #fff;
-      display: block;
-    }
-
     .notice {
       margin: 20px auto;
       color: red;
@@ -17,4 +12,7 @@
       background: #666;
     }
   }
+}
+body{
+  margin:0;
 }

@@ -36,7 +36,6 @@
         }
         & + .search-clear{
           display:inline-block;
-
         }
       }
 
@@ -66,6 +65,13 @@
         border-radius: 0  2px 2px 0;
         height:22px;
         line-height:22px;
+      }
+    }
+  }
+  &:hover{
+    :global{
+      .keyword+ .search-clear{
+        display:inline-block;
       }
     }
   }

@@ -12,15 +12,16 @@ class Search extends React.Component{
     this.onClear = this.onClear.bind(this);
   }
 
-  onChange(e){
+  onChange(){
     var key = this.refs.keyword.value;
     this.setState({key:key,showClearButton:key.length>0});
-    if(this.props.onUserInputChange(key)){
+    if(this.props.onUserInputChange){
       this.props.onUserInputChange(key);
     }
   }
-  onClear(e){
+  onClear(){
     this.setState({key:'',showClearButton:false});
+    this.refs.keyword.focus();
   }
 
   render() {
@@ -43,9 +44,9 @@ class Search extends React.Component{
   }
 }
 
-function SearchWithButton (props){
-  return (<Search {...props} widthButton={true}/>);
-}
+//function SearchWithButton (props){
+  //return (<Search {...props} widthButton={true}/>);
+//}
 
 export { Search as SearchBox};
 

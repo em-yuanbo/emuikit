@@ -12,6 +12,16 @@ class Loading extends React.Component{
             </div>)
   }
 }
-
-export {Loading};
+class ProgressBar extends React.Component{
+  render(){
+    let progress = Math.round(this.props.progress);
+    return (
+      <div className={`${styles.progressbar}`}>
+        <div className="track" style={{width:`${progress}%`}}></div>
+        <div className="label">{progress}%</div>
+      </div>
+    );
+  }
+}
+export {Loading,ProgressBar};
 

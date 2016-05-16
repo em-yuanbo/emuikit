@@ -11,37 +11,37 @@ class EuiButton extends React.Component {
 
 class RegularButton extends React.Component {
   render() {
-    return <div className={`${styles.root} ${this.props.theme || ''} regular`}>{this.props.label}</div>
+    return <div {...this.props} className={`${styles.root} ${this.props.theme || ''} regular`}>{this.props.label}</div>
   }
 }
 class MainButton extends React.Component {
   render() {
-    return <div className={`${styles.root} ${this.props.theme || ''} ${this.props.className} main`}>{this.props.label}</div>
+    return <div {...this.props} className={`${styles.root} ${this.props.theme || ''} ${this.props.className} main`}>{this.props.label}</div>
   }
 }
 class CancelButton extends React.Component {
   render() {
-    return <div className={`${styles.root} ${this.props.theme || ''} cancel`}>{this.props.label}</div>
+    return <div {...this.props} className={`${styles.root} ${this.props.theme || ''} cancel`}>{this.props.label}</div>
   }
 }
 class DisabledButton extends React.Component {
   render() {
-    return <div className={`${styles.root} ${this.props.theme || ''} disabled`}>{this.props.label}</div>
+    return <div {...this.props} className={`${styles.root} ${this.props.theme || ''} disabled`}>{this.props.label}</div>
   }
 }
 class TipButton extends React.Component {
   render() {
-    return <div className={`${styles.root} ${this.props.theme || ''} tip`}>{this.props.label}</div>
+    return <div {...this.props} className={`${styles.root} ${this.props.theme || ''} tip`}>{this.props.label}</div>
   }
 }
 class WarningButton extends React.Component {
   render() {
-    return <div className={`${styles.root} ${this.props.theme || ''} warning`}>{this.props.label}</div>
+    return <div {...this.props} className={`${styles.root} ${this.props.theme || ''} warning`}>{this.props.label}</div>
   }
 }
 class LoadingButton extends React.Component {
   render() {
-    return (<div className={`${styles.root} ${this.props.theme || ''} loading`}>
+    return (<div {...this.props} className={`${styles.root} ${this.props.theme || ''} loading`}>
               <span className="dot dot0"></span>
               <span className="dot dot1"></span>
               <span className="dot dot2"></span>
@@ -85,7 +85,7 @@ class CountingButton extends React.Component {
 
   render() {
     if (this.state.counting) {
-      return (<div className={`${styles.root} ${this.props.theme || ''} counting`}>
+      return (<div {...this.props} className={`${styles.root} ${this.props.theme || ''} counting`}>
                 <span className="count">{this.state.current}</span>
               </div>)
     } else {
@@ -97,12 +97,9 @@ class CountingButton extends React.Component {
 class CustomButton extends React.Component {
   render(){
     let children = this.props.children;
-    console.log(children);
-    console.log(cloneElement);
     let newchildren = React.Children.map(children,(child)=>cloneElement(child,{className:`custom-icon ${child.props.className||''}`}));
-    console.log(newchildren);
     return (
-      <div className={`${styles.root} custom-button ${this.props.theme||''} ${this.props.className||''}`} >
+      <div {...this.props} className={`${styles.root} custom-button ${this.props.theme||''} ${this.props.className||''}`} >
       {newchildren}
       <span className="custom-label">{this.props.label}</span>
       </div>

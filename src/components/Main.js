@@ -2,9 +2,25 @@
 var styles = require('styles/App.css');
 
 import React from 'react';
+window.React = React;
+//import update from 'react/lib/update.js';
+//
+import {Tab} from './tags/tab';
+
+import {DropDown, TimePicker, PopLayer} from './tags/popup';
+
+
+import {List,BigList} from './tags/list';
+
+import {Face} from './tags/face';
+
+import {Avatar} from './tags/avatar';
+import {Status as AvatarStatus} from './tags/avatar/status';
+import {ChannelIcon} from './tags/channel';
+
 import {SearchBox} from './tags/search';
 import {EmInput} from './tags/form';
-import {Loading} from './tags/loading';
+import {Loading, ProgressBar} from './tags/loading';
 
 import {EmSpacer as Spacer} from './tags/spacer';
 import {Icon} from './tags/icon';
@@ -17,23 +33,166 @@ import {Checkbox,CheckboxWithoutBackground} from './tags/toggle/checkbox';
 
 import { MainButton, RegularButton, CancelButton, DisabledButton, LoadingButton, CountingButton, TipButton, WarningButton, CustomButton} from './tags/button';
 
+class Header extends React.Component{
+  render(){
+    return (
+      <div className="" style={{height:40,lineHeight:'40px',fontSize:16,textIndent:20,backgroundColor: 'rgb(242, 242, 242)'}}>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
 class AppComponent extends React.Component {
+  constructor(){
+    super(...arguments);
+    let list = Array.from(new Array(30)).map((_,i)=>({index:i,label:`label ${i}`}));
+    this.state={progress:20,list:list};
+  }
+
+  componentDidMount(){
+    var that = this;
+    this.interval = setInterval(function(){
+      that.setState({progress:Math.random()*100});
+      clearInterval(that.interval);
+    },300);
+  }
+
+  componentWillUnMount(){
+    clearTimeout(this.interval);
+  }
+
+  renderMessage(props){
+    return (
+      <div>
+        <Avatar />
+        <div>
+          <p>nicename</p>
+          <div>
+            hello{props.index}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  itemRender(props){
+    return (
+      <li style={{height:40}} key={props.index}>props.li {props.index}</li>
+    );
+  }
+  onChangeTab(){
+    console.log('onChangeTab');
+
+  }
+
   render() {
     return (
-      <div className={styles.root}>
-        <div>loading</div>
+      <div className={styles.root} style={{position:'relative',padding:10}}>
+        <Header>tab</Header>
+        <Spacer />
+
+        <Tab className='xxx' onChange={this.onChangeTab} defaultActive={0}>
+          <Tab.Item id={0}>
+            <div className='page-0' type={Tab.Item}>
+              page0
+            </div>
+          </Tab.Item>
+          <Tab.Item id={1} >
+          <div className='page-1'type={Tab.Item}>
+            page1
+          </div>
+          </Tab.Item>
+          <Tab.Item id={2} >
+          <div className='page-2' type={Tab.Item}>
+            page2
+          </div>
+          </Tab.Item>
+        </Tab>
+
+        <Spacer />
+        <Header>popup</Header>
+        <Spacer />
+        <div>
+          <span style={{marginRight:10}}>在线状态:</span><DropDown.OnLineStatus />
+        </div>
+        <Spacer />
+        <div>
+        选择时间<TimePicker time={new Date()}/>
+        </div>
+        <Spacer />
+        <Header>list</Header>
+        <Spacer />
+        <List onSelect={(selected)=>{console.log('selected',selected)}} style={{width:300}}>
+          <List.Item>
+            <Avatar key={1} onClick={()=>{console.log('avatar.click')}}/>
+            <div onClick={()=>{console.log('div.click')}}> haha </div>
+          </List.Item>
+          <List.Item>
+            <Avatar>
+              <AvatarStatus.OnLine className="avatar-status"/>
+            </Avatar>
+          </List.Item>
+          <List.Item>
+            <Avatar>
+              <ChannelIcon.Weibo />
+            </Avatar>
+          </List.Item>
+          <List.Item>
+            <Avatar>
+              <ChannelIcon.Weibo />
+            </Avatar>
+          </List.Item>
+          <List.Item>
+            <Avatar>
+              <AvatarStatus.OnLine className="avatar-status"/>
+            </Avatar>
+          </List.Item>
+          <List.Item>
+            <Avatar>
+            </Avatar>
+          </List.Item>
+        </List>
+        <Spacer />
+        <Header>unLimited List</Header>
+        <Spacer />
+        <BigList items={this.state.list} itemRender={this.itemRender} itemHeight={30} itemBuffer={4}/>
+        <Spacer />
+        <Header>Face</Header>
+        <Spacer />
+        <Face.All />
+        <Spacer />
+        <Header>Avatar</Header>
+        <Spacer />
+        <Avatar />
+        <Spacer />
+        <Avatar.Small/>
+        <Spacer />
+        <Avatar>
+        <AvatarStatus.OnLine className="avatar-status"/>
+        </Avatar>
+        <Spacer />
+        <Avatar>
+          <ChannelIcon.Weibo />
+        </Avatar>
+        <Spacer />
+        <Header>loading</Header>
+        <Spacer />
+        <div style={{width:200,height:20}}>
+          <ProgressBar start={20} progress={this.state.progress}/>
+        </div>
         <Spacer />
         <div style={{width:200,height:20}}>
           <Loading />
         </div>
         <Spacer />
-        <div>text input</div>
+        <Header>text input</Header>
         <Spacer />
         <div style={{width:200,height:60}}>
           <EmInput placeholder="input"/>
         </div>
         <Spacer />
-        <div>search</div>
+        <Header>search</Header>
         <Spacer />
         <div style={{width:300}}>
           <SearchBox placeholder="search" withButton={true}/>
@@ -43,7 +202,7 @@ class AppComponent extends React.Component {
           <SearchBox placeholder="search" withButton={false}/>
         </div>
         <Spacer />
-        <div>toggled</div>
+        <Header>toggled</Header>
         <Spacer />
         <ToggleButton content="Toggle button"/>
         <ToggleButton content="Toggle button"/>
@@ -68,7 +227,7 @@ class AppComponent extends React.Component {
         <Switcher defaultValue={true}/>
         <Spacer />
 
-        <div>buttons</div>
+        <Header>buttons</Header>
         <Spacer />
         <CustomButton theme="big main" label="main">
           <Icon.Cancel className="icon-"/>
@@ -116,7 +275,7 @@ class AppComponent extends React.Component {
         <Spacer />
         <WarningButton theme="big" label="Warning"/>
         <Spacer />
-        <div>icon</div>
+        <Header>icon</Header>
         <Spacer />
         <Icon.Edit />
         <Spacer />
