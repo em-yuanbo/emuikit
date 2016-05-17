@@ -12,14 +12,14 @@
  */
 
 import React, {PropTypes} from 'react';
-import styles from './style.css';
+//import styles from './style.css';
 //const {PropTypes} = React;
 
 class PopUp extends React.Component {
   constructor(){
     super(...arguments);
     this.state={
-      active:this.props.active||false,
+      active:this.props.active||false
     };
   }
   render(){
@@ -37,7 +37,7 @@ PopUp.props = {
   active:PropTypes.bool,
   pops:PropTypes.any,
   submit:PropTypes.func,
-  renderResult:PropTypes.object,
+  renderResult:PropTypes.object
 };
 
 import {PopLayer} from './layer';

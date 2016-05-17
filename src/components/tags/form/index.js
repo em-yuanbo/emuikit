@@ -1,2 +1,3 @@
 import {EmInput} from './input';
-export {EmInput}
+import {Radio,RadioGroup} from './radio';
+export {EmInput,Radio,RadioGroup}

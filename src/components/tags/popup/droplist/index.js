@@ -63,7 +63,7 @@ class OnLineDropList extends React.Component{
     if(active){
       var clork = ReactDOM.findDOMNode(this.refs.popupClork);
       let {left,top}=clork.getBoundingClientRect();
-      console.log(clork.getBoundingClientRect(),clork);
+      //console.log(clork.getBoundingClientRect(),clork);
       dropdown = (
         <OnLineDropListPop key={this.popid} onCancel={this.onCancel} onSelect={this.onSelect} selectedIndex={this.state.selectedIndex} left={left} top={top}/>
       );
@@ -93,7 +93,7 @@ class OnLineDropList extends React.Component{
     if(this.state.selectedIndex){
      onLineStatus = ( <AvatarStatus.OffLine className="avatar-status" onClick={this.onClick}/>);
     }
-    console.log(this.state.selectedIndex);
+    //console.log(this.state.selectedIndex);
     return (<div className={`${styles.root}`}>
               {onLineStatus}
               <div ref='popupClork' className='clork'>

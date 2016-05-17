@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.css';
+import styles from './style.css';
 
 class BaseIcon extends React.Component {
   render() {

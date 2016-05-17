@@ -11,19 +11,16 @@ class PopLayer extends React.Component{
   }
   componentDidMount(){
     var that = this;
-    store.addListener(function(e){
-      console.log('onchange');
+    store.addListener(function(){
       var pops = store.getState();
-      console.log(pops);
       that.setState({pops});
     });
     window.addEventListener('click',this.cancelAll);
     window.addEventListener('scroll',this.cancelAll);
   }
   cancelAll(){
-    console.log('cancelAll');
     dispatcher.dispatch({
-      type:'removeAll',
+      type:'removeAll'
     });
   }
   componentWillUnMount(){

@@ -2,7 +2,7 @@ import React from 'react';
 import {Icon} from '../icon';
 import {MainButton} from '../button';
 
-import styles from './index.css';
+import styles from './style.css';
 
 class Search extends React.Component{
   constructor(props){

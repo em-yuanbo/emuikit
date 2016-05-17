@@ -12,7 +12,6 @@ class TimePopup extends React.Component{
     this.onSubmit = this.onSubmit.bind(this);
   }
   onSubmit(){
-    console.log('onSubmit');
     this.props.onSubmit(new Date());
   }
   componentWillUnmount(){
@@ -21,7 +20,6 @@ class TimePopup extends React.Component{
     }
   }
   render(){
-    console.log(this.props.time);
     var time = this.props.time.toString();
     return (
       <div className={`${styles.popup} ${this.props.className||''}`} style={this.props.style}>
@@ -39,7 +37,7 @@ class TimePopup extends React.Component{
   }
 }
 TimePopup.props = {
-  submit : React.PropTypes.func.required,
+  submit : React.PropTypes.func.required
   //value:
 }
 
@@ -53,12 +51,11 @@ class TimePicker extends React.Component{
     this.onCancel = this.onCancel.bind(this);
   }
   onSubmit(time){
-    console.log(time);
     //validate time
     this.setState({time:time,active:false});
     dispatcher.dispatch({
       type:'remove',
-      popid:this.popid,
+      popid:this.popid
     });
   }
   onCancel(){
@@ -67,7 +64,7 @@ class TimePicker extends React.Component{
   componentWillUnmount(){
     dispatcher.dispatch({
       type:'remove',
-      popid:this.popid,
+      popid:this.popid
     });
   }
   onActive(e){
@@ -79,7 +76,6 @@ class TimePicker extends React.Component{
     if(active){
       var clork = ReactDOM.findDOMNode(this.refs.popupClork);
       let {left,top}=clork.getBoundingClientRect();
-      console.log(clork.getBoundingClientRect(),clork);
       var timePopup = (
         <TimePopup key={this.popid} className='popup' time={this.state.time} onCancel={this.onCancel} onSubmit={this.onSubmit} style={{left,top}}/>
       );

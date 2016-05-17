@@ -7,7 +7,6 @@ class PopupStore extends ReduceStore{
   }
   reduce(state,action){
     var newstate = Object.assign({},state);
-    console.log('reduce:',action);
     switch(action.type){
       case 'add':
         newstate = Object.assign({},{[action.popid]:action.popup});
@@ -25,7 +24,6 @@ class PopupStore extends ReduceStore{
         newstate={};
         break;
     }
-    console.log('newstate',newstate);
     return newstate;
   }
 }

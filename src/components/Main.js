@@ -5,9 +5,10 @@ import React from 'react';
 window.React = React;
 //import update from 'react/lib/update.js';
 //
+
 import {Tab} from './tags/tab';
 
-import {DropDown, TimePicker, PopLayer} from './tags/popup';
+import {DropDown, TimePicker } from './tags/popup';
 
 
 import {List,BigList} from './tags/list';
@@ -19,7 +20,7 @@ import {Status as AvatarStatus} from './tags/avatar/status';
 import {ChannelIcon} from './tags/channel';
 
 import {SearchBox} from './tags/search';
-import {EmInput} from './tags/form';
+import {EmInput, Radio, RadioGroup} from './tags/form';
 import {Loading, ProgressBar} from './tags/loading';
 
 import {EmSpacer as Spacer} from './tags/spacer';
@@ -54,8 +55,8 @@ class AppComponent extends React.Component {
     var that = this;
     this.interval = setInterval(function(){
       that.setState({progress:Math.random()*100});
-      clearInterval(that.interval);
-    },300);
+      //clearInterval(that.interval);
+    },3000);
   }
 
   componentWillUnMount(){
@@ -89,24 +90,79 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className={styles.root} style={{position:'relative',padding:10}}>
+        <Header>form inputs - radiogroups</Header>
+        <Spacer />
+        <div>
+          性别：
+          <Radio name='gender' checked={true} value='male'/> 男
+          <Radio name='gender' value='female'/> 女
+        </div>
+        <Spacer />
+        <div style={{}}>
+          人数：
+          <Radio name='amount'  value='0'/> <span style={{marginRight:10}}>0-100</span>
+          <Radio name='amount' checked={true} value='1'/> <span style={{marginRight:10}}>100-500</span>
+          <Radio name='amount'  value='2'/> <span style={{marginRight:10}}>500+</span>
+        </div>
+
+        <Spacer />
         <Header>tab</Header>
         <Spacer />
 
-        <Tab className='xxx' onChange={this.onChangeTab} defaultActive={0}>
-          <Tab.Item id={0}>
+        <Tab className='tab-demo' onChange={this.onChangeTab} defaultActive={'a'}>
+          <Tab.Item id={'a'}>
+            <Tab.ItemHeader>
+              <div className='item-header'>item.1<span className='icon'>{this.state.progress|0}</span></div>
+            </Tab.ItemHeader>
             <div className='page-0' type={Tab.Item}>
               page0
+              <div>
+              选择时间<TimePicker time={new Date()}/>
+              </div>
             </div>
           </Tab.Item>
-          <Tab.Item id={1} >
-          <div className='page-1'type={Tab.Item}>
-            page1
-          </div>
+          <Tab.Item id={'b'} header='item.2'>
+            <div className='page-1'type={Tab.Item}>
+              page1
+              <List onSelect={()=>{}} style={{}}>
+                <List.Item>
+                  <Avatar key={1} onClick={()=>{}}/>
+                  <div onClick={()=>{}}> haha </div>
+                </List.Item>
+                <List.Item>
+                  <Avatar>
+                    <AvatarStatus.OnLine className="avatar-status"/>
+                  </Avatar>
+                </List.Item>
+                <List.Item>
+                  <Avatar>
+                    <ChannelIcon.Weibo />
+                  </Avatar>
+                </List.Item>
+                <List.Item>
+                  <Avatar>
+                    <ChannelIcon.Weibo />
+                  </Avatar>
+                </List.Item>
+                <List.Item>
+                  <Avatar>
+                    <AvatarStatus.OnLine className="avatar-status"/>
+                  </Avatar>
+                </List.Item>
+                <List.Item>
+                  <Avatar>
+                  </Avatar>
+                </List.Item>
+              </List>
+            </div>
           </Tab.Item>
-          <Tab.Item id={2} >
-          <div className='page-2' type={Tab.Item}>
-            page2
-          </div>
+          <Tab.Item id={'c'} header="item.3">
+            <div className='page-2' type={Tab.Item}>
+              page2
+            </div>
+            <div style={{width:300}}>
+              <SearchBox placeholder="search" withButton={true}/>
+            </div>
           </Tab.Item>
         </Tab>
 
@@ -123,10 +179,10 @@ class AppComponent extends React.Component {
         <Spacer />
         <Header>list</Header>
         <Spacer />
-        <List onSelect={(selected)=>{console.log('selected',selected)}} style={{width:300}}>
+        <List onSelect={()=>{}} style={{width:300}}>
           <List.Item>
-            <Avatar key={1} onClick={()=>{console.log('avatar.click')}}/>
-            <div onClick={()=>{console.log('div.click')}}> haha </div>
+            <Avatar key={1} onClick={()=>{}}/>
+            <div onClick={()=>{}}> haha </div>
           </List.Item>
           <List.Item>
             <Avatar>
