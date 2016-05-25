@@ -26,16 +26,37 @@ class Radio extends React.Component {
       value:this.props.value,
     });
   }
+  register(temp){
+    var key = this.props.name;
+    temp[key]=this;
+    return temp;
+  }
+  getValue(){
+    return store.getState()[this.props.name];
+  }
+  //getValue(){
+    //return store.getState()[this.props.name];
+  //}
 
   componentDidMount(){
     store.addListener( this.onChange );
+    if(this.props.form){
+      this.props.form.register(this);
+    }
+  }
+  componentWillUnmount(){
+    store.removeListener( this.onChange );
   }
 
   onChange(){
-    var state = store.getState();
-    console.log(state);
-    var checked = state[this.props.name]==this.props.value;
-    this.setState({checked});
+    //if(this.isMounted()){
+      var state = store.getState();
+      var checked = state[this.props.name]==this.props.value;
+      if(this.state.checked!=checked){
+        console.log(this.props.name,state);
+        this.setState({checked});
+      }
+    //}
   }
 
   render(){
@@ -49,6 +70,7 @@ class Radio extends React.Component {
     );
   }
 }
+Radio.canBindForm=()=>true;
 
 class RadioGroup extends React.Component {
   render(){
@@ -60,7 +82,6 @@ class RadioGroup extends React.Component {
       </div>
     );
   }
-
 }
 
 export { RadioGroup, Radio };

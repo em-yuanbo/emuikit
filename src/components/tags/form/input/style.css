@@ -2,6 +2,7 @@
   height:24px;
   position:relative;
   box-sizing:border-box;
+  display:inline-block;
   :global{
     .input{
       border:1 solid;

@@ -6,7 +6,7 @@ function getId(){
   return ++id;
 }
 
-import {validation }  from './validate.js';
 
-export {getId,dispatcher,store, validation };
+export {getId,dispatcher,store};
+
 

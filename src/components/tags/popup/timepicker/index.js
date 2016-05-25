@@ -62,10 +62,11 @@ class TimePicker extends React.Component{
     this.setState({active:false});
   }
   componentWillUnmount(){
-    dispatcher.dispatch({
-      type:'remove',
-      popid:this.popid
-    });
+    //TODO 此处是否还需要dispatch,
+    //dispatcher.dispatch({
+      //type:'remove',
+      //popid:this.popid
+    //});
   }
   onActive(e){
     e.preventDefault();
@@ -76,13 +77,14 @@ class TimePicker extends React.Component{
     if(active){
       var clork = ReactDOM.findDOMNode(this.refs.popupClork);
       let {left,top}=clork.getBoundingClientRect();
+      //console.log(clork);
       var timePopup = (
         <TimePopup key={this.popid} className='popup' time={this.state.time} onCancel={this.onCancel} onSubmit={this.onSubmit} style={{left,top}}/>
       );
       dispatcher.dispatch({
-        type:'add',
+        type:'pop-replace',
         popid:this.popid,
-        popup:timePopup,
+        content:timePopup,
       });
     }
   }

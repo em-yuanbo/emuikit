@@ -12,7 +12,19 @@ class Switcher extends React.Component{
     this.setState({checked:!this.state.checked});
   }
   componentDidMount(){
+    if(this.props.form){
+      this.props.form.register(this);
+    }
+  }
 
+  register(temp){
+    var key = this.props.name;
+    temp[key]=this;
+    return temp;
+  }
+
+  getValue(){
+    return this.state.checked;
   }
 
   render(){
@@ -24,5 +36,7 @@ class Switcher extends React.Component{
            </div>);
   }
 }
+
+Switcher.canBindForm=(form)=>true;
 
 export {Switcher};

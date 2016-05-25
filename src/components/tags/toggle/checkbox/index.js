@@ -17,6 +17,31 @@ class CheckboxWithLabel extends React.Component{
 }
 
 class Checkbox extends Switcher {
+  constructor(){
+    super(...arguments);
+  }
+
+  componentDidMount(){
+    super.componentDidMount();
+  }
+
+  register(temp){
+    var key = this.props.name;
+    var cs = temp[key];
+    if(Array.isArray(cs)){
+      cs.push(this);
+    }else if(cs){
+      temp[key]=[cs,this];
+    }else{
+      temp[key]=[this];
+    }
+    return temp;
+  }
+
+  getValue(){
+    return this.state.checked?this.props.value:null;
+  }
+
   render(){
     var checkedClass = this.state.checked?'checked':'';
     return (
@@ -28,6 +53,9 @@ class Checkbox extends Switcher {
     );
   }
 }
+
+Checkbox.canBindForm=(form)=>true;
+
 class CheckboxWithoutBackground extends React.Component{
   render(){
     return ( <Checkbox className={`nobg ${this.props.className||''}`}/>);

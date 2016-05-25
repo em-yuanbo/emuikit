@@ -6,6 +6,7 @@ window.React = React;
 //import update from 'react/lib/update.js';
 //
 
+import {DialogDemo} from './tags/popup/dialog/demo.js';
 import {Tab} from './tags/tab';
 
 import {DropDown, TimePicker } from './tags/popup';
@@ -20,7 +21,7 @@ import {Status as AvatarStatus} from './tags/avatar/status';
 import {ChannelIcon} from './tags/channel';
 
 import {SearchBox} from './tags/search';
-import {EmInput, Radio, RadioGroup} from './tags/form';
+import {Form, FormDemo, FormDemo2, EmInput, Radio, RadioGroup} from './tags/form';
 import {Loading, ProgressBar} from './tags/loading';
 
 import {EmSpacer as Spacer} from './tags/spacer';
@@ -86,10 +87,37 @@ class AppComponent extends React.Component {
     console.log('onChangeTab');
 
   }
+  onDialogOpen(){
+    console.log('onDialogOpen');
+    alert('dialog');
+
+  }
 
   render() {
     return (
       <div className={styles.root} style={{position:'relative',padding:10}}>
+      <Header>dialog</Header>
+        <Spacer />
+        <DialogDemo />
+        <MainButton label='dialog' onClick={this.onDialogOpen}/>
+
+        <Spacer />
+      <Header>popup</Header>
+        <Spacer />
+        <div>
+          <span style={{marginRight:10}}>在线状态:</span><DropDown.OnLineStatus />
+        </div>
+        <Spacer />
+        <div>
+        选择时间<TimePicker time={new Date()}/>
+        </div>
+        <Spacer />
+ <Header>form </Header>
+        <Spacer />
+        <FormDemo ref='form'/>
+        <Spacer />
+        <FormDemo2 ref='form2'/>
+        <Spacer />
         <Header>form inputs - radiogroups</Header>
         <Spacer />
         <div>
@@ -103,6 +131,17 @@ class AppComponent extends React.Component {
           <Radio name='amount'  value='0'/> <span style={{marginRight:10}}>0-100</span>
           <Radio name='amount' checked={true} value='1'/> <span style={{marginRight:10}}>100-500</span>
           <Radio name='amount'  value='2'/> <span style={{marginRight:10}}>500+</span>
+        </div>
+        <Spacer />
+        <div>
+          <span style={{marginRight:10}}>工作时:</span>
+          <Checkbox name='workday' defaultValue={true} value="周一"/><span style={{marginRight:10}}>周一</span>
+          <Checkbox name='workday' defaultValue={true} value="周二"/><span style={{marginRight:10}}>周二</span>
+          <Checkbox name='workday' defaultValue={true} value="周三"/><span style={{marginRight:10}}>周三</span>
+          <Checkbox name='workday' defaultValue={true} value="周四"/><span style={{marginRight:10}}>周四</span>
+          <Checkbox name='workday' defaultValue={true} value="周五"/><span style={{marginRight:10}}>周五</span>
+          <Checkbox name='workday' value="周六"/><span style={{marginRight:10}}>周六</span>
+          <Checkbox name='workday' value="周日"/><span style={{marginRight:10}}>周日</span>
         </div>
 
         <Spacer />
@@ -164,18 +203,11 @@ class AppComponent extends React.Component {
               <SearchBox placeholder="search" withButton={true}/>
             </div>
           </Tab.Item>
+          <Tab.Item id={'d'} header='nested'>
+          nested
+          </Tab.Item>
         </Tab>
 
-        <Spacer />
-        <Header>popup</Header>
-        <Spacer />
-        <div>
-          <span style={{marginRight:10}}>在线状态:</span><DropDown.OnLineStatus />
-        </div>
-        <Spacer />
-        <div>
-        选择时间<TimePicker time={new Date()}/>
-        </div>
         <Spacer />
         <Header>list</Header>
         <Spacer />

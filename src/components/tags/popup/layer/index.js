@@ -6,21 +6,21 @@ import {dispatcher, store} from '../utils';
 class PopLayer extends React.Component{
   constructor(){
     super(...arguments);
-    this.state = {pops:{}};
+    this.state = {layers:[]};
     this.cancelAll= this.cancelAll.bind(this);
   }
   componentDidMount(){
     var that = this;
     store.addListener(function(){
       var pops = store.getState();
-      that.setState({pops});
+      that.setState({layers:pops.layers});
     });
     window.addEventListener('click',this.cancelAll);
     window.addEventListener('scroll',this.cancelAll);
   }
   cancelAll(){
     dispatcher.dispatch({
-      type:'removeAll'
+      type:'pop-pop'
     });
   }
   componentWillUnMount(){
@@ -28,10 +28,14 @@ class PopLayer extends React.Component{
     window.removeEventListener('scroll',this.cancelAll);
   }
   render(){
-    var pops = Object.keys(this.state.pops).map(key=>this.state.pops[key]);//.map(render=>render());
+    var pops = this.state.layers.map((layer,index)=>layer.content);//.map(render=>render());
+    var tips = null;
+    var menus = null;
     return (
       <div className={`${styles.poplayer}`}>
       {pops}
+      {tips}
+      {menus}
       </div>
     )
   }

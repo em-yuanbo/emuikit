@@ -1,0 +1,24 @@
+chart
+  react-d3
+
+dialog
+  prompt
+  alert
+  confirm
+
+
+notification
+  tip
+  destopNotification
+  default:根据平台选择desktop或者phone
+
+form
+  validate, onChange[autosave],showError, errorStateManage
+  shouldUpdate
+  contorls 管理与更新
+
+inputs :
+  errors,shouldupdate,onchange
+
+
+

@@ -3,6 +3,8 @@
   src: url('//at.alicdn.com/t/font_1458448867_9595673.ttf') format('truetype');
 }
 .root{
+  display:inline-block;
+  vertical-align:bottom;
   :global{
     .bg{
       width: 16px;
