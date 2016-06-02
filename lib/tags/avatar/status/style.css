@@ -1,0 +1,14 @@
+.root{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius: 50%;
+  background-color: rgb(178, 221, 76);
+  &:global(.on-line){
+    background-color: rgb(178, 221, 76);
+  }
+  &:global(.off-line){
+    background-color: rgb(204, 204, 204);
+  }
+
+}

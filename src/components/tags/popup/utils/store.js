@@ -51,7 +51,7 @@ class PopupStore extends ReduceStore{
       //在固定层弹dialog
         //replace popup
       case 'dialog-replace':
-        var dialog = action.dialog;
+        var dialog = action.content;
         console.log('popat',layer,dialog);
         // 查找目标layer上dialog，并清除
         // 将子layer一并清除
@@ -71,7 +71,7 @@ class PopupStore extends ReduceStore{
       case 'poptop':
       case 'dialog-push':
         //var keys = Object.keys(layers);
-        var dialog = action.dialog;
+        var dialog = action.content;
         dialog = React.cloneElement(dialog,{layer:layers.length});
         newlayer = {layer:layers.length,content:dialog,type:'dialog'};
         layers.push(newlayer);

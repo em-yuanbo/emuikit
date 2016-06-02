@@ -68,7 +68,7 @@ class ListItem extends React.Component{
     let {selectedIndex,index} = this.props;
     var currentClass = selectedIndex ==index?'selected':'';
     return (
-      <div className={`item ${currentClass}`} onClick={this.props.itemClickHandler}>
+      <div className={`${this.props.className||''} item ${currentClass}`} onClick={this.props.itemClickHandler}>
          {this.props.children}
       </div>
     );

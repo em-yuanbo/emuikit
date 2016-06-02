@@ -1,0 +1,10 @@
+.root{
+  font-family: hyphenate;
+  font-size: 26px;
+  text-align: center;
+  cursor: default;
+}
+@font-face {
+  font-family: hyphenate;
+  src: url('/images/font_1461058553_399866.ttf') format('truetype');
+}

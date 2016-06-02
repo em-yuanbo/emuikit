@@ -1,0 +1,8 @@
+{
+  "watch":["src/**/*"],
+  "execMap":{
+    "sh":"bash"
+  },
+  "exec":"npm run prepublish",
+  "ext":"js css jsx"
+}

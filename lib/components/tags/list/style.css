@@ -1,0 +1,11 @@
+.root{
+  :global{
+    .item{
+      &.selected,
+      &:hover{
+        background:#fafafa;
+      }
+    }
+  }
+
+}

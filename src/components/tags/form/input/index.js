@@ -4,7 +4,7 @@ import styles from './style.css';
 class EmInput extends React.Component{
   constructor(){
     super(...arguments);
-    this.state={tip:'error'};
+    this.state={tip:''};
     this.onChange= this.onChange.bind(this);
   }
   onChange(){
@@ -30,14 +30,21 @@ class EmInput extends React.Component{
   }
 
   render(){
+    var tip;
+    if(this.state.tip){
+      tip = (<div className="tip">{this.state.tip}</div>);
+    }
     return (
-      <div className={`${styles.root} ${this.props.className}`}>
-        <input ref='input' type={this.props.type||'text'} className="input" placeholder={this.props.placeholder} onChange={this.onChange}/>
-        <div className="tip">{this.state.tip}</div>
+      <div className={`${styles.root} ${this.props.className||''}`}>
+        <input ref='input' type={this.props.type||'text'} className="input" placeholder={this.props.placeholder} onChange={this.onChange} defaultValue={''}/>
+        {
+          tip
+        }
       </div>
     )
   }
 }
+
 EmInput.canBindForm=(form)=>true;
 
 class EmPassword extends React.Component{

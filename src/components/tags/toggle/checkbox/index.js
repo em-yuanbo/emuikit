@@ -45,7 +45,7 @@ class Checkbox extends Switcher {
   render(){
     var checkedClass = this.state.checked?'checked':'';
     return (
-      <div className={`${styles.root} ${checkedClass} ${this.props.className||''}`} onClick={this.onClick}>
+      <div ref='ccb' className={`${styles.root} ${checkedClass} ${this.props.className||''}`} onClick={this.onClick}>
         <div className="bg">
           <div className="flag">r</div>
         </div>

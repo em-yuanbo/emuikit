@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'kefu30';
+  src: url('//at.alicdn.com/t/font_1458448867_9595673.ttf') format('truetype');
+}
+.root{
+  display:inline-block;
+  vertical-align:bottom;
+  :global{
+    .bg{
+      width: 16px;
+      height: 16px;
+      box-sizing:border-box;
+      cursor: pointer;
+      border-radius: 2px;
+      opacity: 1;
+      border: 1px solid rgb(204, 204, 204);
+      background-color: rgba(0, 0, 0, 0);
+    }
+    .flag{
+      font-family: kefu30;
+      font-size: 30px;
+      color: rgb(26, 26, 26);
+      margin: -9px 0 0 -7px;
+      font-weight: 200;
+      font-style: normal;
+      text-align: justify;
+      white-space: nowrap;
+      display:none;
+    }
+  }
+  &:hover{
+    :global{
+      .flag{
+        display:block;
+        color: rgb(204, 204, 204);
+      }
+    }
+  }
+  &:global(.checked){
+    :global{
+      .flag{
+        display:block;
+        color: rgb(26, 26, 26);
+      }
+      .bg{
+        border: 1px solid rgb(198, 232, 114);
+        background-color: rgb(203, 235, 128);
+      }
+    }
+    &:hover{
+      :global{
+        .flag{
+          color: rgb(26, 26, 26);
+
+        }
+      }
+    }
+  }
+  &:global(.nobg){
+    :global{
+      .bg{
+        border-color:transparent;
+
+      }
+    }
+    &:global(.checked){
+      :global(.bg){
+        background:transparent;
+        border-color:transparent;
+      }
+    }
+  }
+}

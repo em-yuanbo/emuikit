@@ -15,6 +15,7 @@ import {EmInput} from './input';
 import {Radio,RadioGroup} from './radio';
 import {Checkbox} from '../toggle/checkbox';
 import {Switcher} from '../toggle/switcher';
+import {replace as replaceChild} from '../utils';
 
 import { MainButton } from '../button';
 import {EmSpacer as Spacer} from '../spacer';
@@ -30,7 +31,14 @@ class Form extends React.Component{
     this.onSubmit=this.onSubmit.bind(this);
     this.controls = {};
     // rebond;
-    var newchildren = this.bondControls(this.props.children);
+    //var newchildren = this.bondControls(this.props.children);
+    var newchildren = replaceChild(this.props.children,(child)=>{
+      return child.type.canBindForm&&child.type.canBindForm(this);
+    },(child)=>{
+      var props = {};
+      props.form = this;
+      return React.cloneElement(child,props);
+    });
     this.state={newChildren:newchildren};
   }
   onSubmit(){
@@ -41,6 +49,7 @@ class Form extends React.Component{
     var controls = this.controls;
     var keys = Object.keys(controls);
     var datas = {};
+    debugger
     keys.forEach(key=>{
       var c = controls[key];
       var value;
@@ -54,48 +63,6 @@ class Form extends React.Component{
     });
     return datas;
   }
-  bondControls(children){
-    var newChildren = React.Children.map(children,child=>{
-      if(React.isValidElement(child)){
-        var newchild = null;
-        var props = {};
-        if(child.type.canBindForm&&child.type.canBindForm(this)){
-          props.form = this;
-          newchild = React.cloneElement(child,props);
-        }
-        //if(0){
-          //if(child.type==Radio){
-            //props.onChange=()=>{
-              //console.log('radio.change.');
-            //};
-            //props.form = this;
-            //newchild = React.cloneElement(child,props);
-          //}else if(child.type==EmInput){
-            //props.onChange=()=>{
-              //console.log('input.change');
-            //};
-            //props.form = this;
-            //newchild = React.cloneElement(child,props);
-            ////this.controls[child.props.name]=newchild;
-          //}else if(child.type==Checkbox){
-            //props.form = this;
-            //newchild = React.cloneElement(child,props);
-
-          //}else if(child.type==Switcher){
-            //props.form = this;
-            //newchild = React.cloneElement(child,props);
-
-          //}
-        //}
-        else{
-          newchild = React.cloneElement(child,{children:this.bondControls(child.props.children)});
-        }
-        return newchild;
-      }
-      return child;
-    });
-    return newChildren;
-  }
 
   register(control){
     var name = control.props.name;
@@ -107,25 +74,11 @@ class Form extends React.Component{
     //this.controls[name]=control;
   }
 
-  //parseControls(children,depth=0){
-    //React.Children.forEach(children,child=>{
-      //if(React.isValidElement(child)){
-        //if(child.type == Radio){
-          //React.cloneElement(child,{ref:''});
-          //return;
-        //}else if(child.type==EmInput){
-          //return;
-        //}
-      //}
-      //if(child.props&&child.props.children){
-        //this.parseControls(child.props.children,depth+1);
-      //}
-    //});
-  //}
-
   render(){
+
+        //this.state.newChildren
     return (
-      <div className={`${styles.form}`}>
+      <div className={`${styles.form} ${this.props.className}`}>
       {
         this.state.newChildren
       }
@@ -305,4 +258,4 @@ class FormDemo2 extends React.Component{
   }
 }
 
-export {EmInput,Radio,RadioGroup,Form, FormDemo, FormDemo2};
+export {EmInput,Radio,RadioGroup,Form, FormDemo, FormDemo2, validation as Validation};

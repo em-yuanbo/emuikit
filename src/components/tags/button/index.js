@@ -21,7 +21,7 @@ class MainButton extends React.Component {
 }
 class CancelButton extends React.Component {
   render() {
-    return <div {...this.props} className={`${styles.root} ${this.props.theme || ''} cancel`}>{this.props.label}</div>
+    return <div {...this.props} className={`cancel ${styles.root} ${this.props.theme || ''} ${this.props.className}`}>{this.props.label}</div>
   }
 }
 class DisabledButton extends React.Component {

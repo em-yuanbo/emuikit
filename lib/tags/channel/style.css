@@ -1,0 +1,23 @@
+.root{
+  width: 18px;
+      height: 18px;
+  position:absolute;
+  right:0;
+  bottom:0;
+  border: 1px solid rgb(174, 218, 62);
+  background-color: rgb(178, 221, 76);
+  border-radius:50%;
+  box-sizing:border-box;
+  font-family: kefu30;
+  font-size: 24px;
+  line-height:18px;
+  text-align:center;
+  text-indent:-4px;
+  color:white;
+  cursor:default;
+  img{
+    width: 18px;
+        height: 18px;
+    border-radius:50%;
+  }
+}

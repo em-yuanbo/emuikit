@@ -6,34 +6,61 @@ window.React = React;
 //import update from 'react/lib/update.js';
 //
 
-import {DialogDemo} from './tags/popup/dialog/demo.js';
-import {Tab} from './tags/tab';
+import {
+  Tab,
+  DropDown,TimePicker,
 
-import {DropDown, TimePicker } from './tags/popup';
+  Face,
+  AvatarStatus,Avatar,
+  ChannelIcon,
+  SearchBox,
+  Form,EmInput,Radio,
+
+  Loading, ProgressBar,
+  List, BigList,
+
+  Spacer,
+
+  Icon,
+
+  Switcher,
+
+  ToggleButton,
+  ToggleTag,
+
+  Checkbox,CheckboxWithoutBackground,
+
+  MainButton,RegularButton,CancelButton,DisabledButton,LoadingButton,
+  CountingButton,TipButton,WarningButton,CustomButton
+} from '../';
+import {DialogDemo} from './components/tags/popup/dialog/demo.js';
+//import {Tab} from './tags/tab';
+
+//import {DropDown, TimePicker } from './tags/popup';
 
 
-import {List,BigList} from './tags/list';
+//import {List,BigList} from './tags/list';
 
-import {Face} from './tags/face';
+//import {Face} from './tags/face';
 
-import {Avatar} from './tags/avatar';
-import {Status as AvatarStatus} from './tags/avatar/status';
-import {ChannelIcon} from './tags/channel';
+//import {Avatar} from './tags/avatar';
+//import {Status as AvatarStatus} from './tags/avatar/status';
+//import {ChannelIcon} from './tags/channel';
 
-import {SearchBox} from './tags/search';
-import {Form, FormDemo, FormDemo2, EmInput, Radio, RadioGroup} from './tags/form';
-import {Loading, ProgressBar} from './tags/loading';
+//import {SearchBox} from './tags/search';
+import { FormDemo, FormDemo2, RadioGroup} from './components/tags/form';
+//import {Loading, ProgressBar} from './tags/loading';
 
-import {EmSpacer as Spacer} from './tags/spacer';
-import {Icon} from './tags/icon';
-import {Switcher} from './tags/toggle/switcher';
+//import {EmSpacer as Spacer} from './tags/spacer';
+//import {Icon} from './tags/icon';
+//import {Switcher} from './tags/toggle/switcher';
 
-import {ToggleTag} from './tags/toggle/tag';
-import {ToggleButton} from './tags/toggle/tagbutton';
+//import {ToggleTag} from './tags/toggle/tag';
+//import {ToggleButton} from './tags/toggle/tagbutton';
 
-import {Checkbox,CheckboxWithoutBackground} from './tags/toggle/checkbox';
+//import {Checkbox,CheckboxWithoutBackground} from './tags/toggle/checkbox';
 
-import { MainButton, RegularButton, CancelButton, DisabledButton, LoadingButton, CountingButton, TipButton, WarningButton, CustomButton} from './tags/button';
+//import { MainButton, RegularButton, CancelButton, DisabledButton, LoadingButton, CountingButton, TipButton, WarningButton, CustomButton} from './tags/button';
 
 class Header extends React.Component{
   render(){

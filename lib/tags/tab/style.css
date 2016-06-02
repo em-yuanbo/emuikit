@@ -1,0 +1,54 @@
+.root{
+  width:400px;
+  height:300px;
+  border:1px solid rgb(242, 242, 242);
+  display:flex;
+  flex-direction:column;
+  :global{
+    .tab-header ul{
+      height:40px;
+      margin:0;
+      padding:0;
+      display:flex;
+      border-bottom:1px solid rgb(242, 242, 242);
+      box-sizing:border-box;
+      .tab-item{
+        display:inline-block;
+        flex:1;
+        line-height:40px;
+        text-align:center;
+        font-family: Lato, sans-serif;
+        font-size: 14px;
+        position:relative;
+        .tab-item-inner{
+          display:inline-block;
+          padding:0 5px;
+          box-sizing:border-box;
+          cursor:pointer;
+          border-bottom:2px solid transparent;
+          /*TODO clork and animate*/
+        }
+        &.active{
+          .tab-item-inner{
+            border-bottom-color: rgb(167, 212, 42);
+          }
+        }
+        &:hover{
+          color: rgb(167, 212, 42);
+          font-weight: 400;
+        }
+
+      }
+    }
+    .tab-content{
+      padding:4px;
+      box-sizing:border-box;
+      flex:1;
+      overflow:auto;
+
+    }
+  }
+}
+.tabItem{
+
+}

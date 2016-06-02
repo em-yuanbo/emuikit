@@ -1,0 +1,41 @@
+.radio{
+  display:inline-block;
+  width: 24px;
+  height: 24px;
+
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-sizing:border-box;
+  border: 1px solid rgb(204, 204, 204);
+  cursor:pointer;
+  vertical-align: bottom;
+  :global{
+    .flag{
+      display:none;
+      margin:4px;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background-color: rgb(204, 204, 204);
+    }
+  }
+  &:hover{
+    :global{
+      .flag{
+        display:inline-block;
+      }
+    }
+  }
+  &:global(.checked){
+    background-color: rgb(203, 235, 128);
+    border: 1px solid rgb(198, 232, 114);
+    :global{
+      .flag{
+        display:inline-block;
+        background-color: rgb(26, 26, 26);
+      }
+    }
+  }
+
+}

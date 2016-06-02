@@ -26,9 +26,11 @@ class Avatar extends React.Component {
       });
     }
 
+    let avatar = this.props.avatar||'http://static.hdslb.com/images/member/noface.gif';
+
     return (
       <div className={`${styles.root} ${this.props.className||''}`} onClick={this.props.onClick}>
-        <img src="http://static.hdslb.com/images/member/noface.gif" className="photo"/>
+        <img src={avatar} className="photo"/>
         {children}
       </div>
     );
